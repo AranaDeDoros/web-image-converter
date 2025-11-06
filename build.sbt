@@ -6,6 +6,7 @@ ThisBuild / organization     := "com.example"
 ThisBuild / organizationName := "example"
 
 lazy val scrimageVersion = "4.0.31"
+resolvers += Resolver.mavenCentral
 
 lazy val root = (project in file("."))
   .settings(
@@ -17,6 +18,7 @@ lazy val root = (project in file("."))
       "com.sksamuel.scrimage" %% "scrimage-scala" % scrimageVersion,
       "com.sksamuel.scrimage" % "scrimage-webp" % scrimageVersion,
       "com.sksamuel.scrimage" % "scrimage-filters" % scrimageVersion,
+      "de.androidpit" % "color-thief" % "1.1.2",
        "org.scala-lang" % "scala-reflect" % scalaVersion.value
     )
   )
