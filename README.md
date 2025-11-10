@@ -6,7 +6,7 @@ This project demonstrates how to handle image transformations like conversion to
 
 ---
 
-## ✨ Features
+## Features
 
 - ✅ **Convert images to WebP** with optimal compression
 - ✅ **Generate thumbnails** for desktop and mobile
@@ -17,7 +17,7 @@ This project demonstrates how to handle image transformations like conversion to
 
 ---
 
-## 🧰 Tech Stack
+##  Tech Stack
 
 | Component | Description |
 |------------|-------------|
@@ -94,6 +94,26 @@ images.headOption.foreach { imgFile =>
   val outPath = new File(outputDir, "ocr_processed.webp").getPath
   processed.output(WebpWriter.MAX_LOSSLESS_COMPRESSION, new File(outPath))
   println(s"OCR processed stored at: $outPath")
+
+  //create a palette from an image
+  val imagePath = "input/wall.jpg"
+  val outputPath = "palette.png"
+  val colorCount = 6
+
+  val palette = PaletteMaker.getPalette(imagePath, colorCount)
+
+  if (palette == null) {
+    println("could not extract palette.")
+    return
+  }
+  val colors = palette.map(arr => (arr(0), arr(1), arr(2))).toList
+  val saved = PaletteMaker.drawPalette(colors, outputPath)
+  val result = saved match {
+    case Right(_) => s"palette extracted and saved to $outputPath"
+    case Left(err) => "error extracting palette" + err
+  }
+  
+
 ````
  ### color examples
 ```scala
