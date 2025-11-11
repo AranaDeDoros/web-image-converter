@@ -100,17 +100,15 @@ images.headOption.foreach { imgFile =>
   val outputPath = "palette.png"
   val colorCount = 6
 
-  val palette = PaletteMaker.getPalette(imagePath, colorCount)
+  val result = for {
+    palette <- PaletteMaker.getPalette(imagePath, colorCount)
+    colors   = palette.map(a => (a(0), a(1), a(2))).toList
+    saved   <- PaletteMaker.drawPalette(colors, outputPath)
+  } yield saved
 
-  if (palette == null) {
-    println("could not extract palette.")
-    return
-  }
-  val colors = palette.map(arr => (arr(0), arr(1), arr(2))).toList
-  val saved = PaletteMaker.drawPalette(colors, outputPath)
-  val result = saved match {
-    case Right(_) => s"palette extracted and saved to $outputPath"
-    case Left(err) => "error extracting palette" + err
+  result match {
+    case Right(_)  => println(s"Palette extracted and saved to $outputPath")
+    case Left(err) => println(s"Error extracting palette: ${err.getMessage}")
   }
   
 
