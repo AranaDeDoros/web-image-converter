@@ -186,3 +186,5 @@ product_thumbnail    300x300              150x150              1:1
 
 square logo found guidelines for desktop: 100x100  for mobile: 60x60, ratio=1:1
 ```
+# Docs #
+[Here (WIP)](https://github.com/AranaDeDoros/scala-web-image-toolkit)
