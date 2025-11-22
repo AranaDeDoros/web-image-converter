@@ -1,6 +1,6 @@
 package example
 
-import coloring.{CMYKColor, Magenta, RGBColor, Red, Yellow}
+import coloring._
 import com.sksamuel.scrimage.ImmutableImage
 import com.sksamuel.scrimage.webp.WebpWriter
 import web.guidelines.{BackgroundImage, HeroImage, WebsiteImageType}
@@ -8,8 +8,7 @@ import web.utils.Utils
 import web.utils.Utils.PaletteMaker
 
 import java.awt.Color
-import java.io.{File, IOException}
-import scala.util.{Failure, Success}
+import java.io.File
 
 
 object Main extends App {
@@ -141,13 +140,6 @@ object Main extends App {
 
 
 }
-
-
-import de.androidpit.colorthief.ColorThief
-import javax.imageio.ImageIO
-import java.awt.{Color, Font}
-import java.awt.image.BufferedImage
-import java.io.File
 
 object ColorThiefPalettes {
 
